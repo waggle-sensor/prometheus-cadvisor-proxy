@@ -10,6 +10,7 @@ vsns = [
     "W01B",
     "W022",
     "W017",
+    "W023",
 ]
 
 r = requests.get("https://api.sagecontinuum.org/api/state")
