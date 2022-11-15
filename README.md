@@ -13,4 +13,6 @@ _NOTE(sean) Since the intended use is collect the **large** number of cadvisor m
 python3 gen-targets.py > targets.json
 ```
 4. Copy `prometheus.yml` and `targets.json` into your Prometheus config. (If you are familiar with Prometheus, you can merge `prometheus.yml` with your existing config, otherwise it will work on its own.)
-5. Run Prometheus!
+5. Run `go build`.
+6. Run `./cadvisor-proxy`.
+7. Run Prometheus!
