@@ -26,3 +26,9 @@ As you add targets to your `targets.json` file, you should see them appear in th
 Here's an example of using cadvisor metrics to look at throttling.
 
 ![Chart](images/example-chart.png)
+
+This was created using the following [query](http://localhost:9090/graph?g0.expr=sum%20by%20(vsn%2C%20pod)%20(increase(container_cpu_cfs_throttled_periods_total%7Bvsn%3D%22W023%22%2C%20pod!%3D%22%22%7D%5B5m%5D)%20%2F%20increase(container_cpu_cfs_periods_total%5B5m%5D))%20%3E%20(25%20%2F%20100)&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h):
+
+```
+sum by (vsn, pod) (increase(container_cpu_cfs_throttled_periods_total{vsn="W023", pod!=""}[5m]) / increase(container_cpu_cfs_periods_total[5m])) > (25 / 100)
+```
