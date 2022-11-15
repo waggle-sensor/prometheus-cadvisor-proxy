@@ -16,3 +16,13 @@ python3 gen-targets.py > targets.json
 5. Run `go build`.
 6. Run `./cadvisor-proxy`.
 7. Run Prometheus!
+
+## Examples / Screenshots
+
+As you add targets to your `targets.json` file, you should see them appear in the Prometheus Targets menu:
+
+![Targets](images/example-targets.png)
+
+Here's an example of using cadvisor metrics to look at throttling.
+
+![Chart](images/example-chart.png)
