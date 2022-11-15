@@ -2,6 +2,8 @@
 
 This is a debugging tool used to expose cadvisor metrics on a node via an ssh+http proxy.
 
+_NOTE(sean) Since the intended use is collect the **large** number of cadvisor metrics at a fast-ish interval (at least 1/min), I'm not sure if we want this to be used for steady state monitoring. I view it more as a tool for detailed data analysis and debugging._
+
 ## Usage
 
 1. Make sure you have downloaded Prometheus and extracted it to `prometheus-x.y.z`.
