@@ -25,7 +25,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 	cmd := exec.CommandContext(ctx, "ssh", "-C", fmt.Sprintf("node-%s", nodeID), "kubectl", "get", "--raw", fmt.Sprintf("/api/v1/nodes/%s.ws-nxcore/proxy/metrics/cadvisor", nodeID))
 
-	b, err := cmd.CombinedOutput()
+	b, err := cmd.Output()
 
 	if err != nil {
 		log.Printf("[%s] error during metric collection: %s", nodeID, err)
