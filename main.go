@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"log"
 	"net/http"
 	"os/exec"
@@ -23,7 +22,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	// TODO(scrape all nodes, not just nxcore)
 	ctx, cancel := context.WithTimeout(r.Context(), *timeout)
 	defer cancel()
-	cmd := exec.CommandContext(ctx, "ssh", "-C", fmt.Sprintf("node-%s", nodeID), "kubectl", "get", "--raw", fmt.Sprintf("/api/v1/nodes/%s.ws-nxcore/proxy/metrics/cadvisor", nodeID))
+	cmd := exec.CommandContext(ctx, "ssh", "-C", "node-"+nodeID, `bash -c "kubectl get nodes | awk '/Ready/ {print \$1}' | xargs -I{} kubectl get --raw /api/v1/nodes/{}/proxy/metrics/cadvisor"`)
 
 	b, err := cmd.Output()
 
