@@ -42,5 +42,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	flag.Parse()
 	http.Handle("/metrics/", http.StripPrefix("/metrics/", http.HandlerFunc(handler)))
+	log.Printf("starting server on :9911")
 	http.ListenAndServe(":9911", nil)
 }
